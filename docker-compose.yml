@@ -1,0 +1,30 @@
+# Created by: devops-agent (DevOps Engineer)
+# Runs TaskFlow + optional Postgres for local production-like testing.
+# Usage: docker compose up --build
+services:
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      DATA_MODE: json
+      JSON_DB_PATH: ./data/db.json
+    volumes:
+      - app-data:/app/data
+    restart: unless-stopped
+
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: taskflow
+      POSTGRES_PASSWORD: taskflow
+      POSTGRES_DB: taskflow
+    ports:
+      - "5432:5432"
+    volumes:
+      - pg-data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+volumes:
+  app-data:
+  pg-data:
