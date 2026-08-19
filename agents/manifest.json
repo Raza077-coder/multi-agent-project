@@ -1,0 +1,104 @@
+{
+  "project": "taskflow",
+  "project_name": "TaskFlow — Collaborative Task Management SaaS",
+  "description": "An industry-level task management SaaS with a Next.js frontend, REST API backend, and pluggable persistence (JSON file for dev, PostgreSQL for production). Built by a multi-agent system of six specialized agents.",
+  "version": "1.0.0",
+  "built_by": "multi-agent-system",
+  "agents": [
+    {
+      "id": "project-manager-agent",
+      "role": "Project Manager",
+      "color": "#f59e0b",
+      "responsibilities": [
+        "Define the product specification and acceptance criteria",
+        "Design the multi-agent collaboration protocol",
+        "Define the file ownership / attribution convention",
+        "Coordinate the work of all specialist agents",
+        "Approve the final release"
+      ]
+    },
+    {
+      "id": "backend-developer-agent",
+      "role": "Backend Developer",
+      "color": "#3b82f6",
+      "responsibilities": [
+        "Design the domain model and data layer",
+        "Implement the JSON-file persistence adapter (dev / preview)",
+        "Implement the PostgreSQL persistence adapter (production)",
+        "Implement input validation with Zod",
+        "Implement the REST API routes and response helpers"
+      ]
+    },
+    {
+      "id": "frontend-developer-agent",
+      "role": "Frontend Developer",
+      "color": "#8b5cf6",
+      "responsibilities": [
+        "Build the Next.js App Router application shell",
+        "Implement the API client and formatting utilities",
+        "Build the dashboard page with statistics and project grid",
+        "Build the Kanban board page with task cards and modals"
+      ]
+    },
+    {
+      "id": "devops-agent",
+      "role": "DevOps Engineer",
+      "color": "#10b981",
+      "responsibilities": [
+        "Scaffold build tooling: package.json, TypeScript, Next.js, Tailwind, ESLint",
+        "Provide environment configuration templates",
+        "Add Dockerfile and docker-compose for containerized runs",
+        "Add vercel.json and a GitHub Actions CI pipeline"
+      ]
+    },
+    {
+      "id": "qa-testing-agent",
+      "role": "QA / Testing Engineer",
+      "color": "#ef4444",
+      "responsibilities": [
+        "Write unit tests for validation and the JSON store",
+        "Write an integration test for the PostgreSQL adapter",
+        "Write an API smoke-test script",
+        "Run typecheck, tests, production build and live API smoke tests",
+        "Fix or escalate all defects found"
+      ]
+    },
+    {
+      "id": "documentation-agent",
+      "role": "Technical Writer",
+      "color": "#06b6d4",
+      "responsibilities": [
+        "Write the README with quickstart and feature overview",
+        "Document the system architecture and data model",
+        "Document the REST API reference",
+        "Document testing workflows",
+        "Write the step-by-step Vercel deployment guide"
+      ]
+    }
+  ],
+  "collaboration_protocol": {
+    "trigger": "project-manager-agent initiates each phase in order",
+    "handoff": "each agent completes its deliverables, then hands off to the next agent in the pipeline",
+    "review": "qa-testing-agent reviews every deliverable before release",
+    "attribution": "every source file carries a header comment naming the agent that created it",
+    "order": [
+      "project-manager-agent",
+      "devops-agent",
+      "backend-developer-agent",
+      "frontend-developer-agent",
+      "qa-testing-agent",
+      "documentation-agent"
+    ]
+  },
+  "architecture": {
+    "frontend": "Next.js 15 (App Router) + React 19 + Tailwind CSS v4",
+    "backend": "Next.js Route Handlers exposing a REST API under /api",
+    "persistence": "JSON file adapter (dev) or PostgreSQL adapter (production) behind a common DataStore interface",
+    "validation": "Zod schemas shared by the API layer",
+    "deployment": "Vercel (serverless) or Docker / docker-compose"
+  },
+  "repo": {
+    "owner": "Raza077-coder",
+    "name": "multi-agent-project"
+  }
+}
